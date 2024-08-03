@@ -1,3 +1,5 @@
+Check 'https://youtu.be/Ie6akfeoO4A?si=p2GIK1Go3FteaU0v' To see the project in action. It has been updated on 2x to make it fit in the 5min length course requirement. Put on 0.5x to see in the original speed.
+
 ***Distinctiveness and Complexity
 
 The main feature that disctincs my app is that the functionalities intended for superusers are not addressed through admin interface, but from the same interface than any regular user(using template  tags to render those functionalities only to superusers) making the User experiencs WAY more intuitive and friendly.
