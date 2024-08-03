@@ -1,0 +1,74 @@
+{% extends "events/base.html" %}
+{% block content %}
+<h1>{{ event.title }}</h1>
+<p>{{ event.description }}</p>
+<p>Date: {{ event.date }}</p>
+<p>Location: {{ event.location }}</p>
+<p>
+    {% if event.image %}
+        <img src="{{ event.image.url }}" alt="{{ event.title }}" width="200"><br>
+    {% endif %}
+</p>
+
+{% if user.is_authenticated %}
+    <h2>RSVP</h2>
+    <form method="post" action="{% url 'rsvp_event' event.id %}">
+        {% csrf_token %}
+        <label>
+            <input type="radio" name="status" value="yes" {% if user_rsvp_response == 'yes' %}checked{% endif %}> Yes
+        </label>
+        <label>
+            <input type="radio" name="status" value="no" {% if user_rsvp_response == 'no' %}checked{% endif %}> No
+        </label>
+        <label>
+            <input type="radio" name="status" value="maybe" {% if user_rsvp_response == 'maybe' %}checked{% endif %}> Maybe
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+{% endif %}
+
+<h2>Attendees</h2>
+{% if attendees %}
+    <ul>
+        {% for attendee in attendees %}
+            <li>{{ attendee.username }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No attendees yet.</p>
+{% endif %}
+
+{% if user.is_superuser or user in event.collaborators.all %}
+    <h2>Invite Users</h2>
+    <form method="post" action="{% url 'send_invitation' event.id %}">
+        {% csrf_token %}
+        <select name="user" multiple>
+            {% if users_to_invite %}
+                {% for user in users_to_invite %}
+                    <option value="{{ user.id }}">{{ user.username }}</option>
+                {% endfor %}
+            {% else %}
+                <option disabled>No users to invite.</option>
+            {% endif %}
+        </select>
+        <button type="submit">Send Invitation</button>
+    </form>
+
+    <h2>Grant Collaborator Status</h2>
+    <form method="post" action="{% url 'grant_collaborator_status' event.id %}">
+        {% csrf_token %}
+        <select name="user" multiple>
+            {% if potential_collaborators %}
+                {% for user in potential_collaborators %}
+                    <option value="{{ user.id }}">{{ user.username }}</option>
+                {% endfor %}
+            {% else %}
+                <option disabled>No users to collaborate.</option>
+            {% endif %}
+        </select>
+        <button type="submit">Grant</button>
+    </form>
+{% endif %}
+
+{% endblock %}
+

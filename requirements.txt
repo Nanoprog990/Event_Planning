@@ -1,0 +1,4 @@
+Pillow
+django-environ
+selenium
+chromedriver-py

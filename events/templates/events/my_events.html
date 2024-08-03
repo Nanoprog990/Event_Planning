@@ -1,0 +1,41 @@
+<!-- templates/events/my_events.html -->
+{% extends 'events/base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+    <h1>My Events</h1>
+    <div class="events-container">
+        {% if events %}
+            <div class="event-grid">
+                {% for event in events %}
+                    <div class="event-card">
+                        <strong><a href="{% url 'event_detail' event_id=event.id %}">{{ event.title }}</a></strong> by {{ event.organizer.username }}<br>
+                        {{ event.date }} at {{ event.location }}<br>
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" alt="{{ event.title }}" width="200"><br>
+                        {% endif %}
+                        {{ event.description }}<br>
+                        
+                        <!-- Display RSVPs for the event -->
+                        {% if rsvps|get_item:event.id %}
+                            <h3>RSVPs</h3>
+                            <ul>
+                                {% for rsvp in rsvps|get_item:event.id %}
+                                    <li>{{ rsvp.user.username }}: {{ rsvp.status }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>No RSVPs yet.</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No events found.</p>
+        {% endif %}
+    
+        {% if user.is_superuser %}
+            <a href="{% url 'create_event' %}" class="btn btn-primary">Create Event</a>
+        {% endif %}
+    </div>
+{% endblock %}

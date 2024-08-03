@@ -1,0 +1,15 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Update Profile{% endblock %}
+
+{% block content %}
+<h2>Update Profile</h2>
+<form id="profile-form" method="post" enctype="multipart/form-data" 
+      data-update-url="{% url 'update_profile' %}" 
+      data-user-profile-url="{% url 'user_profile' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+</form>
+<div id="message"></div>
+{% endblock %}

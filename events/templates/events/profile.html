@@ -1,0 +1,19 @@
+<!-- profile.html -->
+
+{% extends 'events/base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<h2>User Profile</h2>
+<!-- Display user profile information -->
+{% if user.userprofile %}
+    <p>{{ user.username }}</p>
+    <p>Bio: {{ user.userprofile.bio }}</p>
+    {% if user.userprofile.profile_picture %}
+        <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+    {% endif %}
+{% endif %}
+<p><a href="{% url 'update_profile' %}">Update Profile</a></p>
+
+{% endblock %}

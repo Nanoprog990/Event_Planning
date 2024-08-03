@@ -1,0 +1,298 @@
+/* Global styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto; /* Ensure vertical scrollbar is always visible */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #1e1e1e; /* Dark background color */
+    color: #c9d1d9; /* Light text color */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    flex: 1;
+    padding-bottom: 60px; /* Adjust this value to the height of your footer */
+    margin: 2rem;
+}
+
+a {
+    color: #58a6ff; /* Twitter blue for links */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1f6feb;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #161b22;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left a, .navbar-right a {
+    text-decoration: none;
+    color: #c9d1d9;
+}
+
+.navbar-left a:hover, .navbar-right a:hover {
+    color: #58a6ff;
+}
+
+.navbar-left a {
+    margin-right: 20px;
+}
+
+.navbar-right span {
+    margin-right: 10px;
+}
+
+.navbar-right a {
+    margin-left: 10px;
+}
+
+h2 {
+    color: #c9d1d9;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+form input,
+form select,
+form button {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #444c56;
+    border-radius: 4px;
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+form button {
+    cursor: pointer;
+    background-color: #21262d;
+}
+
+form button:hover {
+    background-color: #30363d;
+}
+
+/* Buttons */
+button {
+    background-color: #1DA1F2; /* Twitter blue */
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #0D8AF4; /* Darker shade of blue on hover */
+}
+
+/* Filter Form */
+form.filter-form {
+    max-width: 500px; /* Set maximum width */
+    margin: 0 auto 10px; /* Center form and add bottom margin */
+    padding: 10px; /* Add padding */
+    background-color: #192734; /* Match navigation bar color */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; /* Change to column for vertical layout */
+    gap: 5px; /* Small gap between rows */
+}
+
+form.filter-form .input-row {
+    display: flex; /* Arrange inputs in a row */
+    justify-content: space-between; /* Space between inputs */
+    gap: 10px; /* Gap between inputs */
+}
+
+form.filter-form input[type="text"],
+form.filter-form select {
+    flex: 1; /* Allow inputs to flex */
+    padding: 10px;
+    border: 1px solid #8899A6;
+    background-color: #283E4A;
+    color: #FFF;
+    border-radius: 5px;
+}
+
+form.filter-form button {
+    padding: 10px 20px;
+    background-color: #1DA1F2;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+form.filter-form button:hover {
+    background-color: #0D8AF4;
+}
+
+/* Event Grid */
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.event-card {
+    background-color: #161b22;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    margin-bottom: 1rem;
+}
+
+.event-card img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+/* Event List */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #283E4A;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+ul li img {
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* Profile Picture */
+.profile-picture {
+    max-width: 150px;  /* Set a maximum width */
+    height: auto;     /* Maintain aspect ratio */
+    border-radius: 50%;  /* Optional: make it circular */
+    display: block;   /* Ensures it behaves as a block element */
+    margin: 10px 0;   /* Optional: margin for spacing */
+}
+
+/* Miscellaneous */
+.alert {
+    background-color: #FF4136; /* Red alert background */
+    color: #FFF;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #2ECC40; /* Green success background */
+    color: #FFF;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 10px;
+    padding: 1rem;
+    background-color: #161b22;
+    position: relative; /* Changed from fixed to relative */
+    width: 100%;
+    color: #c9d1d9;
+}
+
+/* Events Container */
+.events-container {
+    margin: 2rem; /* Adjust this value as needed */
+}
+
+.events-container ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.events-container li {
+    background-color: #283E4A;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.events-container p {
+    margin-bottom: 1rem; /* Space between the message and button */
+}
+
+.events-container .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    color: #FFF;
+    background-color: #1DA1F2;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.events-container .btn:hover {
+    background-color: #0D8AF4;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+    
+    .navbar-left, .navbar-right {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .navbar-left a, .navbar-right a {
+        margin: 5px 0;
+    }
+    
+    .content {
+        margin: 1rem;
+    }
+    
+    form {
+        max-width: 100%;
+    }
+    
+    .event-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    form.filter-form {
+        max-width: 100%;
+    }
+}
